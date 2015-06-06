@@ -2,34 +2,30 @@
  * Boot up the Vue instance and wire up the router.
  */
 
-var Vue = require('vue')
-var Router = require('director').Router
-var app = new Vue(require('./app.vue'))
-var router = new Router()
+var Vue = require('vue');
+var Router = require('director').Router;
+var app = new Vue(require('./app.vue'));
+var router = new Router();
 
-Vue.config.warnExpressionErrors = false
+Vue.config.warnExpressionErrors = false;
 
-router.on('/news/:page', function (page) {
-  app.view = 'news-view'
-  app.params.page = +page
-})
+router.on('/top', function () {
+  app.view = 'top-view';
+});
 
-router.on('/user/:id', function (id) {
-  window.scrollTo(0, 0)
-  app.view = 'user-view'
-  app.params.userId = id
-})
+router.on('/price', function () {
+  app.view = 'price-view';
+});
 
-router.on('/item/:id', function (id) {
-  window.scrollTo(0, 0)
-  app.view = 'item-view'
-  app.params.itemId = id
-})
+router.on('/about', function () {
+  app.view = 'about-view';
+});
 
 router.configure({
   notfound: function () {
-    router.setRoute('/news/1')
+    router.setRoute('/top');
   }
-})
+});
 
-router.init('/news/1')
+router.init('/top');
+
